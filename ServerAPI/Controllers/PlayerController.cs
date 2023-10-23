@@ -1,14 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using ServerAPI.DbContext;
 using ServerAPI.ModelDB;
 
 namespace ServerAPI.Controllers;
 
+[ApiController]
 [Route("api/[controller]")]
-public class PlayerController: Controller
+public class PlayerController: ControllerBase
 {
-    private IEnumerable<Player> Players { get; set; } = new[] { new Player() { Id = 1, Name = "Listik" }};
+    private PostgresContext _context;
+
+    public PlayerController(PostgresContext context) => _context = context;
+    
+    private List<Player> Players
+    {
+        get => _context.Players.ToList();
+    }
 
     /// <summary>
     /// Returns list of Players
