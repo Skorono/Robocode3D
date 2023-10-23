@@ -25,4 +25,10 @@ public class PlayerController: Controller
     {
         return Players.Where(p => p.Id == id);
     }
+
+    [HttpPost(Name = "PostNewPlayer")]
+    public void MakePlayer()
+    {
+        
+    }
 }

@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using ServerAPI.DbContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +20,8 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = options.DefaultPolicy;
 });
 
-var context = new PostgresContext();
-context.Database.EnsureDeleted();
-context.Database.EnsureCreated();
+builder.Services.AddDbContext<PostgresContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

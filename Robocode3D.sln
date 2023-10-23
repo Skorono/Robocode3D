@@ -2,7 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerAPI", "ServerAPI\ServerAPI.csproj", "{4427BF84-3041-43BE-ACF4-A9EA8B30F36D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AICodeAdv", "AICodeAdv\AICodeAdv.csproj", "{8E6D8746-5AD6-478B-B67E-47A8DB053F3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robocode3DGame", "Robocode3DGame\Robocode3DGame.csproj", "{122D6488-A1B6-4B48-82D7-92B85EB341FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E53AB432-57E4-4CC3-A6D4-6CB216F98634}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +19,9 @@ Global
 		{4427BF84-3041-43BE-ACF4-A9EA8B30F36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4427BF84-3041-43BE-ACF4-A9EA8B30F36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4427BF84-3041-43BE-ACF4-A9EA8B30F36D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E6D8746-5AD6-478B-B67E-47A8DB053F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E6D8746-5AD6-478B-B67E-47A8DB053F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E6D8746-5AD6-478B-B67E-47A8DB053F3C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E6D8746-5AD6-478B-B67E-47A8DB053F3C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{122D6488-A1B6-4B48-82D7-92B85EB341FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122D6488-A1B6-4B48-82D7-92B85EB341FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122D6488-A1B6-4B48-82D7-92B85EB341FD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{122D6488-A1B6-4B48-82D7-92B85EB341FD}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

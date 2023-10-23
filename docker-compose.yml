@@ -1,0 +1,21 @@
+﻿services:
+  serverapi:
+    image: serverapi
+    build:
+      context: .
+      dockerfile: ServerAPI/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on: 
+      - db 
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Database=postgres;Username=postgres;Password=postgres"
+  db: 
+    container_name: postgresDb
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Robocode3DServiceServer
+    ports:
+      - "5432:5432"

@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  serverapi:
+    build:
+      context: "C:\\Users\\User\\RiderProjects\\Robocode3D"
+      dockerfile: "ServerAPI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net7.0/ServerAPI.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:443;http://+:80"
+    image: "serverapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\User\\AppData\\Roaming\\ASP.NET\\Https:/root/.aspnet/https"
+    - "C:\\Users\\User\\AppData\\Roaming\\Microsoft\\UserSecrets:/root/.microsoft/usersecrets"
+    - "C:\\Users\\User\\RiderProjects\\Robocode3D\\ServerAPI:/app:rw"
+    working_dir: "/app"

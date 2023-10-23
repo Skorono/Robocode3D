@@ -1,0 +1,4 @@
+﻿[submodule "--force"]
+	path = --force
+	url = https://github.com/Skorono/AICodeAdv/
+	branch = Robocode3D
