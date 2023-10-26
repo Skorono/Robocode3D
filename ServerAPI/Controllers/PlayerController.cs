@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ServerAPI.DbContext;
 using ServerAPI.ModelDB;
 
@@ -12,11 +13,15 @@ public class PlayerController: ControllerBase
 {
     private PostgresContext _context;
 
-    public PlayerController(PostgresContext context) => _context = context;
-    
-    private List<Player> Players
+    public PlayerController(PostgresContext context)
     {
-        get => _context.Players.ToList();
+        _context = context;
+        if (!_context.Database.CanConnect())    _context.Database.Migrate();
+    }
+    
+    private Task<List<Player>> Players
+    {
+        get => _context.Players.ToListAsync();
     }
 
     /// <summary>
@@ -24,20 +29,21 @@ public class PlayerController: ControllerBase
     /// </summary>
     /// <returns>Player</returns>
     [HttpGet(Name = "GetPlayers")]
-    public IEnumerable<Player> GetPlayers()
+    public IEnumerable<List<Player>> GetPlayers()
     {
-        return Players;
+        yield return Players.Result;
     }
     
     [HttpGet("{id}", Name = "GetPlayerById")]
     public IEnumerable<Player> GetPlayerById(int id)
     {
-        return Players.Where(p => p.Id == id);
+        yield return Players.Result.First(p => p.Id == id);
     }
 
-    [HttpPost(Name = "PostNewPlayer")]
-    public void MakePlayer()
+    [HttpPost("{id}, {name}, {login}, {password}", Name = "PostNewPlayer")]
+    public async void MakePlayer(int id, string name, string login, string password)
     {
-        
+        await Task.Factory.StartNew(() => _context.Players.Add(new Player() { Id = id, Name = name, Password = password, Login = login }))
+            .ContinueWith(_ => _context.SaveChangesAsync());
     }
 }

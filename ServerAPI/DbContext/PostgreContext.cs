@@ -19,10 +19,5 @@ public class PostgresContext: Microsoft.EntityFrameworkCore.DbContext
         new {
             ls.LobbyId, ls.PlayerId
         });
-
-        modelBuilder.Entity<Player>().HasData(new List<Player>()
-        {
-            new Player() { Id = 1, Name = "Listik", Login = "qwerty123", Password = "123"}
-        });
     }
 }
