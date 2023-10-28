@@ -2,17 +2,20 @@
 services:
   serverapi:
     build:
-      context: "C:\\Users\\astat\\RiderProjects\\Robocode3D"
+      context: "C:\\Users\\User\\RiderProjects\\Robocode3D"
       dockerfile: "ServerAPI/Dockerfile"
       target: "base"
     command: []
     entrypoint:
     - "dotnet"
-    - "/app/bin/Release/net7.0/ServerAPI.dll"
+    - "/app/bin/Debug/net7.0/ServerAPI.dll"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:443;http://+:80"
     image: "serverapi:dev"
     ports: []
     volumes:
-    - "C:\\Users\\astat\\RiderProjects\\Robocode3D\\ServerAPI:/app:rw"
+    - "C:\\Users\\User\\AppData\\Roaming\\ASP.NET\\Https:/root/.aspnet/https"
+    - "C:\\Users\\User\\AppData\\Roaming\\Microsoft\\UserSecrets:/root/.microsoft/usersecrets"
+    - "C:\\Users\\User\\RiderProjects\\Robocode3D\\ServerAPI:/app:rw"
     working_dir: "/app"

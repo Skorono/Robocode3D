@@ -5,10 +5,11 @@ namespace ServerAPI.DbContext;
 
 public class PostgresContext: Microsoft.EntityFrameworkCore.DbContext
 {
-    public virtual DbSet<Player> Players { get; set; }
-    public virtual DbSet<Lobby> Lobbies { get; set; }
-    public virtual DbSet<LobbyStaff> LobbyStaves { get; set; }
-    public virtual DbSet<LobbyVisibility> LobbyVisibilities { get; set; }
+    public virtual DbSet<Player> Players { get; set; } = null!;
+    public virtual DbSet<Lobby> Lobbies { get; set; } = null!;
+    public virtual DbSet<LobbyStaff> LobbyStaves { get; set; } = null!;
+    public virtual DbSet<LobbyVisibility> LobbyVisibilities { get; set; } = null!;
+    public virtual DbSet<PlayerRole> PlayerRoles { get; set; } = null!;
 
     public PostgresContext(DbContextOptions<PostgresContext> options) : base(options)
     {
@@ -18,6 +19,13 @@ public class PostgresContext: Microsoft.EntityFrameworkCore.DbContext
         modelBuilder.Entity<LobbyStaff>().HasKey(ls =>
         new {
             ls.LobbyId, ls.PlayerId
+        });
+
+        modelBuilder.Entity<PlayerRole>().HasData( new List<PlayerRole>()
+        {
+            new PlayerRole() { Name = UserRoles.Admin  },
+            new PlayerRole() { Name = UserRoles.Helper },
+            new PlayerRole() { Name = UserRoles.Player }
         });
     }
 }

@@ -11,12 +11,12 @@ namespace ServerAPI.Controllers;
 [Route("api/[controller]")]
 public class PlayerController: ControllerBase
 {
-    private PostgresContext _context;
+    private readonly PostgresContext _context;
 
     public PlayerController(PostgresContext context)
     {
         _context = context;
-        if (!_context.Database.CanConnect())    _context.Database.Migrate();
+        _context.Database.Migrate();
     }
     
     private Task<List<Player>> Players
