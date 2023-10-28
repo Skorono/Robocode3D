@@ -12,13 +12,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-/*builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-    .AddNegotiate();
-builder.Services.AddAuthorization(options =>
-{
-    // By default, all incoming requests will be authorized according to the default policy.
-    options.FallbackPolicy = options.DefaultPolicy;
-});*/
+// builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+//     .AddNegotiate();
+// builder.Services.AddAuthorization(options =>
+// {
+//     // By default, all incoming requests will be authorized according to the default policy.
+//     options.FallbackPolicy = options.DefaultPolicy;
+// });
 
 builder.Services.AddDbContext<PostgresContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -34,7 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 //app.UseAuthorization();
 

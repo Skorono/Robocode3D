@@ -10,7 +10,7 @@ public class Player
     public string Password { get; set; } = default!;
 
     [ForeignKey("RoleId")]
-    public int RoleId { get; set; }
+    public char RoleId { get; set; }
     
     public PlayerRole PlayerRole { get; set; } = default!;
 }

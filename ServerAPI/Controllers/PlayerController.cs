@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ServerAPI.DbContext;
 using ServerAPI.ModelDB;
@@ -19,10 +17,7 @@ public class PlayerController: ControllerBase
         _context.Database.Migrate();
     }
     
-    private Task<List<Player>> Players
-    {
-        get => _context.Players.ToListAsync();
-    }
+    private List<Player> Players => _context.Players.ToListAsync().WaitAsync(TimeSpan.MaxValue).Result;
 
     /// <summary>
     /// Returns list of Players
@@ -31,13 +26,13 @@ public class PlayerController: ControllerBase
     [HttpGet(Name = "GetPlayers")]
     public IEnumerable<List<Player>> GetPlayers()
     {
-        yield return Players.Result;
+        yield return Players;
     }
     
     [HttpGet("{id}", Name = "GetPlayerById")]
     public IEnumerable<Player> GetPlayerById(int id)
     {
-        yield return Players.Result.First(p => p.Id == id);
+        yield return Players.First(p => p.Id == id);
     }
 
     [HttpPost("{id}, {name}, {login}, {password}", Name = "PostNewPlayer")]

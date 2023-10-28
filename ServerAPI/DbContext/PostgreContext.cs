@@ -23,9 +23,9 @@ public class PostgresContext: Microsoft.EntityFrameworkCore.DbContext
 
         modelBuilder.Entity<PlayerRole>().HasData( new List<PlayerRole>()
         {
-            new PlayerRole() { Name = UserRoles.Admin  },
-            new PlayerRole() { Name = UserRoles.Helper },
-            new PlayerRole() { Name = UserRoles.Player }
+            new PlayerRole() { Id = UserRoles.Admin, Name = nameof(UserRoles.Admin)  },
+            new PlayerRole() { Id = UserRoles.Helper, Name = nameof(UserRoles.Helper) },
+            new PlayerRole() { Id = UserRoles.Player, Name = nameof(UserRoles.Player) }
         });
     }
 }

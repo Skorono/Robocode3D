@@ -2,7 +2,7 @@
 
 public static class UserRoles
 {
-    public static string Admin = nameof(Admin);
-    public static string Helper = nameof(Helper);
-    public static string Player = nameof(Admin);
+    public static char Admin = 'A';
+    public static char Helper = 'H';
+    public static char Player = 'P';
 }

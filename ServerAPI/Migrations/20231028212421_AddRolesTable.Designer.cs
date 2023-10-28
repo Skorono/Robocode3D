@@ -11,7 +11,7 @@ using ServerAPI.DbContext;
 namespace ServerAPI.Migrations
 {
     [DbContext(typeof(PostgresContext))]
-    [Migration("20231026121503_AddRolesTable")]
+    [Migration("20231028212421_AddRolesTable")]
     partial class AddRolesTable
     {
         /// <inheritdoc />
@@ -101,8 +101,8 @@ namespace ServerAPI.Migrations
                     b.Property<char>("PlayerRoleId")
                         .HasColumnType("character(1)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                    b.Property<char>("RoleId")
+                        .HasColumnType("character(1)");
 
                     b.HasKey("Id");
 
@@ -126,6 +126,23 @@ namespace ServerAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PlayerRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 'A',
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 'H',
+                            Name = "Helper"
+                        },
+                        new
+                        {
+                            Id = 'P',
+                            Name = "Player"
+                        });
                 });
 
             modelBuilder.Entity("ServerAPI.ModelDB.Lobby", b =>
