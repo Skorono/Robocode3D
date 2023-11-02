@@ -1,16 +1,16 @@
 ﻿using AviationAICode.GameObjects;
 using Godot;
 
-namespace AICodingGame.Weapons;
+namespace AICodingGame.Items.Weapons;
 
-public class SampleGun: GameItem
+public class BaseGun: GameItem
 {
     public enum AmmunitionType
     {
         
     }
     
-    public SampleGun()
+    public BaseGun()
     {
         Type = ItemType.Gun;
     }

@@ -1,10 +1,10 @@
-﻿using AICodingGame.Weapons;
+﻿using AICodingGame.Items.Weapons;
 
 namespace AICodingGame.PlayerModels;
 
 public abstract class ArmoredPlayer: SamplePlayer
 {
-    private SampleGun Gun { get; set; }
+    private BaseGun Gun { get; set; }
     
     protected abstract void Fire();
 

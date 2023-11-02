@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>AviationAICode</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="GameObjects\Items\" />
+  </ItemGroup>
 </Project>

@@ -1,6 +1,13 @@
-﻿namespace AviationAICode.GameObjects;
+﻿using System.Collections.Generic;
 
-public interface IItemStorage
+namespace AviationAICode.GameObjects;
+
+public interface IItemStorage<T>
 {
-    
+     IEnumerable<T> GetItems();
+     void PushItem();
+
+     void DeleteItem();
+
+     void UpdateItem();
 }
