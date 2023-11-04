@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="AviationAICode"
+config/name="AICodingGame"
+run/main_scene="res://Scenes/Maps/map.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
